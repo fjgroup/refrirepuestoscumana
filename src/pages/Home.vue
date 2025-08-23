@@ -1,14 +1,31 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import FrostLayer from '@/components/FrostLayer.vue'
-import HeroLogoBadge from '@/components/HeroLogoBadge.vue'
 import Testimonials from '@/components/Testimonials.vue'
+import { ref, onMounted } from 'vue'
+import legacyPng from '@/logo_white.png'
+
+// Logo detection (WebP -> PNG -> legacy)
+const brandLogo = ref<string>(legacyPng)
+function tryLoad(src: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = () => resolve(src)
+    img.onerror = reject
+    img.src = src
+  })
+}
+onMounted(async () => {
+  const candidates = ['/logo.webp', '/logo.png', '/logo_white.webp']
+  for (const c of candidates) {
+    try { brandLogo.value = await tryLoad(c); break } catch { }
+  }
+})
 </script>
 
 <template>
   <section class="hero">
     <FrostLayer />
-    <HeroLogoBadge />
     <div class="container hero-inner">
       <h1>{{ $t('hero.title') }}</h1>
       <p class="subtitle">{{ $t('hero.subtitle') }}</p>
@@ -29,6 +46,14 @@ import Testimonials from '@/components/Testimonials.vue'
     </ul>
   </section>
   <Testimonials />
+
+  <!-- Brand reinforcement section -->
+  <section class="brand-section">
+    <div class="container">
+      <img :src="brandLogo" alt="REFRIREPUESTOSCUMANÁ" class="brand-logo" />
+      <div class="slogan">Somos su solución en frío</div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -83,5 +108,33 @@ import Testimonials from '@/components/Testimonials.vue'
   color: #0a1c30;
   padding: 12px;
   border-radius: 8px
+}
+
+/* Brand reinforcement section */
+.brand-section {
+  padding: 28px 0 36px;
+  text-align: center
+}
+
+.brand-logo {
+  height: 96px;
+  max-width: min(520px, 90%);
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .03))
+}
+
+.slogan {
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--blue-800);
+  letter-spacing: .3px;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem)
+}
+
+@media (max-width: 520px) {
+  .brand-logo {
+    height: 72px
+  }
 }
 </style>

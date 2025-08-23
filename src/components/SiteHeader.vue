@@ -1,17 +1,37 @@
 <script setup lang="ts">
 import { currentLocale, setLocale } from '@/i18n'
-import logo from '@/logo_white.png'
+import { ref, onMounted } from 'vue'
+import legacyPng from '@/logo_white.png' // fallback final si no existen archivos en /public
 
 const toggleLocale = () => {
   setLocale(currentLocale.value === 'en' ? 'es' : 'en')
 }
+
+// Resolución progresiva del logo: /logo.webp → /logo.png → /logo_white.webp → import PNG
+const logoSrc = ref<string>(legacyPng)
+
+function tryLoad(src: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = () => resolve(src)
+    img.onerror = reject
+    img.src = src
+  })
+}
+
+onMounted(async () => {
+  const candidates = ['/logo.webp', '/logo.png', '/logo_white.webp']
+  for (const c of candidates) {
+    try { logoSrc.value = await tryLoad(c); break } catch { }
+  }
+})
 </script>
 
 <template>
   <header class="site-header">
-    <div class="header-split">
+    <div class="header-bar">
       <router-link to="/" class="brand" aria-label="Inicio">
-        <img :src="logo" alt="REFRIREPUESTOSCUMANÁ" />
+        <img :src="logoSrc" alt="REFRIREPUESTOSCUMANÁ" />
       </router-link>
       <nav class="nav">
         <ul class="links">
@@ -33,17 +53,17 @@ const toggleLocale = () => {
 
 <style scoped>
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  position: relative;
+  /* scroll normal con el contenido */
 }
 
-.header-split {
+.header-bar {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  height: 64px;
-  background: linear-gradient(90deg, #ffffff 0%, #ffffff 48%, rgba(255, 255, 255, 0.6) 50%, #e9eef3 52%, #e9eef3 100%);
+  height: var(--header-h, 100px);
+  background: #e9eef3;
+  /* fondo gris uniforme */
   border-bottom: 1px solid #d7dfe6;
 }
 
@@ -70,13 +90,16 @@ const toggleLocale = () => {
   color: #0a1c30;
   font-weight: 700;
   letter-spacing: .4px;
-  padding-left: 16px
+  padding-left: 16px;
+  /* asegurar que el logo quede centrado verticalmente en la fila */
+  height: var(--header-h, 100px)
 }
 
 .brand img {
-  height: 60px;
-  /* máximo posible dentro de 64px de alto del header */
+  height: 100px;
   width: auto;
+  /* mantener proporción */
+  max-height: calc(var(--header-h, 100px) - 8px);
   object-fit: contain
 }
 

@@ -35,7 +35,9 @@ watch(currentLocale, () => applySEO())
   --blue-800: #0e2946;
   --blue-500: #76c7ff;
   --gray-100: #f0f7ff;
-  --text: #0a1c30
+  --text: #0a1c30;
+  --header-h: 100px;
+  /* altura de header usada por SiteHeader y layout */
 }
 
 * {
@@ -56,7 +58,7 @@ body {
 }
 
 main {
-  min-height: calc(100dvh - 64px - 180px)
+  min-height: calc(100dvh - var(--header-h, 100px) - 180px)
 }
 
 /* Subtle interactive frost effect */
@@ -75,3 +77,10 @@ main {
   filter: blur(10px)
 }
 </style>
+
+@media (max-width: 768px) {
+:root { --header-h: 84px }
+}
+@media (max-width: 520px) {
+:root { --header-h: 76px }
+}
