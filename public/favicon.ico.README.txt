@@ -1,0 +1,2 @@
+Favicon: The project uses public/favicon.svg for modern browsers. If you need .ico, convert favicon.svg to favicon.ico (48x48 or 64x64) using a converter and place it as public/favicon.ico.
+
