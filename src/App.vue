@@ -32,8 +32,8 @@ watch(currentLocale, () => applySEO())
 <style>
 :root {
   --blue-900: #0a1c30;
-  --blue-800: #0e2946;
-  --blue-500: #76c7ff;
+  --blue-800: #0c2f57;
+  --blue-500: #4db7ff;
   --gray-100: #f0f7ff;
   --text: #0a1c30;
   --header-h: 100px;

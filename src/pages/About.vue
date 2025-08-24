@@ -4,12 +4,14 @@
   <section class="container pad">
     <h1>{{ $t('about.title') }}</h1>
     <p>{{ $t('about.blurb') }}</p>
-    <h2>{{ $t('about.missionTitle') }}, {{ $t('about.visionTitle') }}, {{ $t('about.valuesTitle') }}</h2>
-    <ul>
-      <li><strong>{{ $t('about.missionTitle') }}:</strong> {{ $t('about.mission') }}</li>
-      <li><strong>{{ $t('about.visionTitle') }}:</strong> {{ $t('about.vision') }}</li>
-      <li><strong>{{ $t('about.valuesTitle') }}:</strong> {{ $t('about.values') }}</li>
-    </ul>
+    <h2>{{ $t('about.missionTitle') }}</h2>
+    <p>{{ $t('about.mission') }}</p>
+
+    <h2>{{ $t('about.visionTitle') }}</h2>
+    <p>{{ $t('about.vision') }}</p>
+
+    <h2>{{ $t('about.valuesTitle') }}</h2>
+    <p>{{ $t('about.values') }}</p>
   </section>
 </template>
 

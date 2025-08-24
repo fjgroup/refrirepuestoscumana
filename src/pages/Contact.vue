@@ -4,9 +4,12 @@
   <section class="container pad">
     <h1>{{ $t('contact.title') }}</h1>
     <div class="card">
-      <div><strong>{{ $t('contact.address') }}:</strong> 5532 Fishermans Drive, Bradenton, Florida</div>
-      <div><strong>{{ $t('contact.phone') }}:</strong> <a href="tel:9412424040">941 242 4040</a></div>
-      <div><strong>{{ $t('contact.hours') }}:</strong> {{ $t('contact.hoursValue') }}</div>
+      <div><i-tabler-map-pin style="vertical-align:-2px; margin-right:6px" /> <strong>{{ $t('contact.address')
+          }}:</strong> 5532 Fishermans Drive, Bradenton, Florida</div>
+      <div><i-tabler-phone style="vertical-align:-2px; margin-right:6px" /> <strong>{{ $t('contact.phone') }}:</strong>
+        <a href="tel:9412424040">941 242 4040</a></div>
+      <div><i-tabler-clock style="vertical-align:-2px; margin-right:6px" /> <strong>{{ $t('contact.hours') }}:</strong>
+        {{ $t('contact.hoursValue') }}</div>
     </div>
     <div class="map-wrap">
       <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"

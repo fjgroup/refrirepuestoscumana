@@ -15,8 +15,6 @@ import { icons } from '@/shared/icons'
       <div class="cat"><span class="ico">{{ icons.tools }}</span> {{ $t('products.cats.tools') }}</div>
     </div>
     <p class="note">{{ $t('products.catalogNote') }}</p>
-    <p class="note">💡 Sin fotos todavía: usamos íconos para mostrar categorías. Contáctanos para ver modelos y marcas
-      disponibles.</p>
   </section>
 </template>
 
@@ -41,10 +39,17 @@ import { icons } from '@/shared/icons'
   background: #f0f7ff;
   color: #0a1c30;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 8px
+  gap: 8px;
+  box-shadow: 0 1px 0 rgba(10, 28, 48, .03);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease
+}
+
+.cat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 28, 48, .12)
 }
 
 .ico {

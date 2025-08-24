@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 const items = [
   { name: 'Luis A.', stars: 5, text: 'Me cambiaron el compresor del aire en el mismo día. El equipo enfría mejor y el consumo bajó. Muy profesionales y puntuales.' },
   { name: 'María G.', stars: 5, text: 'Otro técnico dijo que debía cambiar el compresor. Ellos lo repararon y mi aire volvió a enfriar sin gastar de más. Profesionales y honestos.' },
@@ -13,13 +14,18 @@ const items = [
   { name: 'Miguel D.', stars: 5, text: 'Instalaron un aire nuevo con garantía. Explicaron el uso y cuidados. Muy atentos.' },
   { name: 'Camila S.', stars: 5, text: 'Mi aire no arrancaba. Por fin alguien que lo soluciona sin excusas. Precio justo.' },
 ]
+const fourRandom = computed(() => items
+  .map(v => ({ v, r: Math.random() }))
+  .sort((a, b) => a.r - b.r)
+  .slice(0, 4)
+  .map(x => x.v))
 </script>
 
 <template>
   <section class="testimonials container">
-    <h2>Testimonios</h2>
+    <h2><i-tabler-quote style="vertical-align:-2px; margin-right:6px" /> Testimonios</h2>
     <div class="grid">
-      <article v-for="t in items" :key="t.name" class="card">
+      <article v-for="t in fourRandom" :key="t.name" class="card">
         <p class="text">“{{ t.text }}”</p>
         <div class="name">— {{ t.name }} <span class="stars">{{ '★'.repeat(Math.floor(t.stars)) }}<span
               v-if="t.stars % 1">½</span></span></div>

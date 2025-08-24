@@ -39,10 +39,10 @@ onMounted(async () => {
   <section class="featured container">
     <h2>{{ $t('home.featuredTitle') }}</h2>
     <ul class="grid">
-      <li>{{ $t('home.f1') }}</li>
-      <li>{{ $t('home.f2') }}</li>
-      <li>{{ $t('home.f3') }}</li>
-      <li>{{ $t('home.f4') }}</li>
+      <li><i-tabler-engine style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f1') }}</li>
+      <li><i-tabler-droplet style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f2') }}</li>
+      <li><i-tabler-thermometer style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f3') }}</li>
+      <li><i-tabler-gas-station style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f4') }}</li>
     </ul>
   </section>
   <Testimonials />
@@ -82,12 +82,22 @@ onMounted(async () => {
 .cta {
   display: inline-block;
   margin-top: 16px;
-  background: #76c7ff;
+  background: var(--blue-500);
   color: #0a1c30;
   padding: 10px 16px;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: 600
+  font-weight: 600;
+  transition: filter .25s ease, box-shadow .25s ease, transform .08s ease
+}
+
+.cta:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 6px 18px rgba(76, 183, 255, .35)
+}
+
+.cta:active {
+  transform: translateY(1px)
 }
 
 .about,
@@ -107,7 +117,14 @@ onMounted(async () => {
   background: #f0f7ff;
   color: #0a1c30;
   padding: 12px;
-  border-radius: 8px
+  border-radius: 10px;
+  box-shadow: 0 1px 0 rgba(10, 28, 48, .03);
+  transition: transform .18s ease, box-shadow .18s ease
+}
+
+.grid li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 28, 48, .12)
 }
 
 /* Brand reinforcement section */
@@ -117,8 +134,8 @@ onMounted(async () => {
 }
 
 .brand-logo {
-  height: 96px;
-  max-width: min(520px, 90%);
+  height: 150px;
+  max-width: min(680px, 95%);
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .03))
@@ -134,7 +151,7 @@ onMounted(async () => {
 
 @media (max-width: 520px) {
   .brand-logo {
-    height: 72px
+    height: 112px
   }
 }
 </style>
