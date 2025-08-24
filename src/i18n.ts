@@ -91,11 +91,8 @@ const messages = {
       follow: 'Follow us',
     },
     home: {
-      featuredTitle: 'Featured Products',
-      f1: 'Hermetic compressors',
-      f2: 'Filter driers and sight glasses',
-      f3: 'Thermostats and controllers',
-      f4: 'Refrigerant gases (R-134a, R-410A, R-404A)',
+      featuredTitle: 'Encyclopedia Tip',
+      tipReadMore: 'Read more'
     },
     seo: {
       home: 'REFRIREPUESTOSCUMANÁ | Refrigeration Parts & Solutions',
@@ -172,11 +169,8 @@ const messages = {
       follow: 'Síguenos',
     },
     home: {
-      featuredTitle: 'Productos destacados',
-      f1: 'Compresores herméticos',
-      f2: 'Secadores de filtro y mirillas',
-      f3: 'Termostatos y controladores',
-      f4: 'Gases refrigerantes (R-134a, R-410A, R-404A)',
+      featuredTitle: 'Tip de la enciclopedia',
+      tipReadMore: 'Leer más'
     },
     seo: {
       home: 'REFRIREPUESTOSCUMANÁ | Repuestos y Soluciones de Refrigeración',

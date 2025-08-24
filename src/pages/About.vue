@@ -25,4 +25,17 @@
 .pad {
   padding: 32px 0
 }
+
+/* Mejor legibilidad en párrafos largos: justificado suave con guiones automáticos */
+p {
+  text-align: justify;
+  text-wrap: pretty;
+  hyphens: auto
+}
+
+/* Encabezados con balance para evitar saltos feos en móviles */
+h1,
+h2 {
+  text-wrap: balance
+}
 </style>

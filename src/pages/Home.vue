@@ -2,8 +2,10 @@
 import { RouterLink } from 'vue-router'
 import FrostLayer from '@/components/FrostLayer.vue'
 import Testimonials from '@/components/Testimonials.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import legacyPng from '@/logo_white.png'
+import { articles } from '@/shared/encyclopedia'
+import { currentLocale } from '@/i18n'
 
 // Logo detection (WebP -> PNG -> legacy)
 const brandLogo = ref<string>(legacyPng)
@@ -15,12 +17,33 @@ function tryLoad(src: string): Promise<string> {
     img.src = src
   })
 }
+
+// Enciclopedia: tip aleatorio en portada
+interface Tip { slug: string; title: string; summary: string }
+const tip = ref<Tip | null>(null)
+const tipSlug = ref<string>('')
+function setTipFromSlug(slug: string) {
+  const a = articles.find(x => x.slug === slug)
+  if (!a) return
+  const title = currentLocale.value === 'es' ? a.titleEs : a.title
+  const summary = currentLocale.value === 'es' ? a.summaryEs : a.summary
+  tip.value = { slug: a.slug, title, summary }
+}
+function pickRandomTip() {
+  const idx = Math.floor(Math.random() * articles.length)
+  tipSlug.value = articles[idx].slug
+  setTipFromSlug(tipSlug.value)
+}
+
 onMounted(async () => {
   const candidates = ['/logo.webp', '/logo.png', '/logo_white.webp']
   for (const c of candidates) {
     try { brandLogo.value = await tryLoad(c); break } catch { }
   }
+  pickRandomTip()
 })
+
+watch(currentLocale, () => { if (tipSlug.value) setTipFromSlug(tipSlug.value) })
 </script>
 
 <template>
@@ -36,14 +59,14 @@ onMounted(async () => {
     <h2>{{ $t('about.title') }}</h2>
     <p>{{ $t('about.blurb') }}</p>
   </section>
-  <section class="featured container">
+  <!-- Reemplazo: Tip aleatorio de la enciclopedia -->
+  <section class="ency-tip container" v-if="tip">
     <h2>{{ $t('home.featuredTitle') }}</h2>
-    <ul class="grid">
-      <li><i-tabler-engine style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f1') }}</li>
-      <li><i-tabler-droplet style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f2') }}</li>
-      <li><i-tabler-thermometer style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f3') }}</li>
-      <li><i-tabler-gas-station style="vertical-align:-2px; margin-right:6px" />{{ $t('home.f4') }}</li>
-    </ul>
+    <RouterLink :to="`/encyclopedia/${tip.slug}`" class="tip-card" :aria-label="$t('home.tipReadMore')">
+      <div class="tip-title">{{ tip.title }}</div>
+      <div class="tip-summary">{{ tip.summary }}</div>
+      <div class="tip-cta">{{ $t('home.tipReadMore') }}</div>
+    </RouterLink>
   </section>
   <Testimonials />
 
@@ -101,30 +124,41 @@ onMounted(async () => {
 }
 
 .about,
-.featured {
+.ency-tip {
   padding: 32px 0
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  list-style: none;
-  padding: 0
+/* Tarjeta del tip enciclopedia */
+.ency-tip .tip-card {
+  display: block;
+  background: #f7fbff;
+  border: 1px solid #dbe8f5;
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 16px rgba(10, 28, 48, .06);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease
 }
 
-.grid li {
-  background: #f0f7ff;
-  color: #0a1c30;
-  padding: 12px;
-  border-radius: 10px;
-  box-shadow: 0 1px 0 rgba(10, 28, 48, .03);
-  transition: transform .18s ease, box-shadow .18s ease
-}
-
-.grid li:hover {
+.ency-tip .tip-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(10, 28, 48, .12)
+  box-shadow: 0 10px 22px rgba(10, 28, 48, .12)
+}
+
+.ency-tip .tip-title {
+  font-weight: 700;
+  margin-bottom: 6px
+}
+
+.ency-tip .tip-summary {
+  opacity: .92
+}
+
+.ency-tip .tip-cta {
+  margin-top: 10px;
+  color: var(--blue-800);
+  font-weight: 600
 }
 
 /* Brand reinforcement section */

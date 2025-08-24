@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { currentLocale, setLocale } from '@/i18n'
 import { ref, onMounted } from 'vue'
-import legacyPng from '@/logo_white.png'
 
 const isOpen = ref(false)
 const closeMenu = () => { isOpen.value = false }
@@ -10,8 +9,8 @@ const toggleLocale = () => {
   setLocale(currentLocale.value === 'en' ? 'es' : 'en')
 }
 
-// Resolución progresiva del logo: /logo.webp → /logo.png → /logo_white.webp → import PNG
-const logoSrc = ref<string>(legacyPng)
+// Resolución progresiva del logo: /logo.webp → /logo.png → /logo_white.webp
+const logoSrc = ref<string>('/logo.webp')
 
 function tryLoad(src: string): Promise<string> {
   return new Promise((resolve, reject) => {

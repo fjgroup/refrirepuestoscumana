@@ -50,15 +50,86 @@ body,
   height: 100%
 }
 
+/* Aumentamos base +2px y mejoramos legibilidad tipo Wikipedia */
+html {
+  font-size: 18px
+}
+
+@media (max-width: 520px) {
+  html {
+    font-size: 17px
+  }
+}
+
 body {
   margin: 0;
   font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: var(--text);
-  background: linear-gradient(180deg, #ffffff, #f5fbff)
+  background: linear-gradient(180deg, #ffffff, #f5fbff);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 main {
   min-height: calc(100dvh - var(--header-h, 100px) - 180px)
+}
+
+/* Tipografía global inspirada en Wikipedia */
+p {
+  margin: 0 0 0.9em
+}
+
+ul,
+ol {
+  margin: 0.2em 0 1em 1.25em;
+  padding: 0
+}
+
+li {
+  margin: 0.25em 0
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.3;
+  margin: 0.8em 0 0.4em;
+  letter-spacing: .2px
+}
+
+h1 {
+  font-size: 1.9rem
+}
+
+h2 {
+  font-size: 1.35rem;
+  border-bottom: 1px solid #e6eef6;
+  padding-bottom: 4px
+}
+
+h3 {
+  font-size: 1.15rem
+}
+
+.lead {
+  font-size: 1.05rem;
+  opacity: .96
+}
+
+a {
+  color: var(--blue-800);
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px
+}
+
+::selection {
+  background: rgba(77, 183, 255, .25)
 }
 
 /* Subtle interactive frost effect */
@@ -76,11 +147,17 @@ main {
   pointer-events: none;
   filter: blur(10px)
 }
-</style>
 
+/* Ajuste de altura del header por viewport */
 @media (max-width: 768px) {
-:root { --header-h: 84px }
+  :root {
+    --header-h: 84px
+  }
 }
+
 @media (max-width: 520px) {
-:root { --header-h: 76px }
+  :root {
+    --header-h: 76px
+  }
 }
+</style>
