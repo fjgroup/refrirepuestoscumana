@@ -55,23 +55,42 @@ const processed = computed(() => {
   const src = article.value?.body || ''
   const lines = src.split('\n')
   let html = ''
-  let inList = false
+  let inUl = false
+  let inOl = false
   const toc: Array<{ id: string; title: string }> = []
+  const closeLists = () => {
+    if (inUl) { html += '</ul>'; inUl = false }
+    if (inOl) { html += '</ol>'; inOl = false }
+  }
   for (const raw of lines) {
     const line = raw.trim()
-    if (!line) { if (inList) { html += '</ul>'; inList = false } continue }
-    if (line.startsWith('- ')) {
-      if (!inList) { html += '<ul>'; inList = true }
+    if (!line) { closeLists(); continue }
+    const isBulleted = line.startsWith('- ')
+    const isNumbered = /^[0-9]+[.)]\s/.test(line)
+
+    if (isBulleted) {
+      if (!inUl) { closeLists(); html += '<ul>'; inUl = true }
       html += `<li>${line.slice(2)}</li>`
       continue
     }
-    // Encabezado de sección
-    if (inList) { html += '</ul>'; inList = false }
-    const id = slugify(line)
-    toc.push({ id, title: line })
-    html += `<h2 id="${id}">${line}</h2>`
+    if (isNumbered) {
+      if (!inOl) { closeLists(); html += '<ol>'; inOl = true }
+      html += `<li>${line.replace(/^[0-9]+[.)]\s/, '')}</li>`
+      continue
+    }
+
+    // Encabezado o párrafo
+    closeLists()
+    const isHeading = line.endsWith(':') || (!/[.!?]$/.test(line) && line.length <= 80)
+    if (isHeading) {
+      const id = slugify(line.replace(/[:：]\s*$/, ''))
+      toc.push({ id, title: line })
+      html += `<h2 id="${id}">${line}</h2>`
+    } else {
+      html += `<p>${line}</p>`
+    }
   }
-  if (inList) html += '</ul>'
+  closeLists()
   return { html, toc }
 })
 

@@ -90,6 +90,7 @@ const messages = {
     footer: {
       rights: 'All rights reserved.',
       follow: 'Follow us',
+      testimonials: 'Testimonials',
     },
     home: {
       featuredTitle: 'Encyclopedia Tip',
@@ -169,6 +170,7 @@ const messages = {
     footer: {
       rights: 'Todos los derechos reservados.',
       follow: 'Síguenos',
+      testimonials: 'Testimonios',
     },
     home: {
       featuredTitle: 'Tip de la enciclopedia',

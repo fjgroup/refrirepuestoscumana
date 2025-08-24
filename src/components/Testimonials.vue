@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { t } from '@/i18n'
 const items = [
   { name: 'Luis A.', stars: 5, text: 'Me cambiaron el compresor del aire en el mismo día. El equipo enfría mejor y el consumo bajó. Muy profesionales y puntuales.' },
   { name: 'María G.', stars: 5, text: 'Otro técnico dijo que debía cambiar el compresor. Ellos lo repararon y mi aire volvió a enfriar sin gastar de más. Profesionales y honestos.' },
@@ -23,7 +24,8 @@ const fourRandom = computed(() => items
 
 <template>
   <section class="testimonials container">
-    <h2><i-tabler-quote style="vertical-align:-2px; margin-right:6px" /> Testimonios</h2>
+    <h2><i-tabler-quote style="vertical-align:-2px; margin-right:6px" /> {{ t('footer.testimonials') || 'Testimonios' }}
+    </h2>
     <div class="grid">
       <article v-for="t in fourRandom" :key="t.name" class="card">
         <p class="text">“{{ t.text }}”</p>
