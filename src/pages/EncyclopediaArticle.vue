@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { articles } from '@/shared/encyclopedia'
 import { richArticles } from '@/shared/encyclopedia-content'
@@ -16,6 +16,28 @@ const article = computed(() => {
   const rich = richArticles.find(r => r.slug === slug.value)
   const body = rich ? (currentLocale.value === 'es' ? rich.es : rich.en) : ''
   return { ...a, title, summary, body }
+})
+
+// SEO dinámico por artículo
+function setMeta(title: string, description: string) {
+  document.title = title
+  const ensure = (sel: string, create: () => HTMLMetaElement) => {
+    let el = document.head.querySelector(sel) as HTMLMetaElement | null
+    if (!el) { el = create(); document.head.appendChild(el) }
+    return el
+  }
+  ensure('meta[name="description"]', () => Object.assign(document.createElement('meta'), { name: 'description' }))
+    .setAttribute('content', description)
+  ensure('meta[property="og:title"]', () => Object.assign(document.createElement('meta'), { setAttribute() { }, }))
+  ensure('meta[property="og:description"]', () => Object.assign(document.createElement('meta'), { setAttribute() { }, }))
+  const ogTitle = document.head.querySelector('meta[property="og:title"]') as HTMLMetaElement
+  const ogDesc = document.head.querySelector('meta[property="og:description"]') as HTMLMetaElement
+  if (ogTitle) ogTitle.setAttribute('content', title)
+  if (ogDesc) ogDesc.setAttribute('content', description)
+}
+
+watchEffect(() => {
+  if (article.value) setMeta(article.value.title, article.value.summary)
 })
 
 // Convierte el texto simple en HTML con <h2> y listas <ul><li>, y genera TOC
@@ -124,9 +146,16 @@ const diagram = computed(() => {
 
     <div class="content">
       <p class="disclaimer">
-        Aviso: Este contenido es educativo y de referencia general. No es una guía oficial de ninguna marca ni
-        reemplaza los manuales del fabricante. Para instrucciones específicas de modelos y normativa local, consulta
-        siempre la documentación oficial y las páginas web de los fabricantes.
+        <template v-if="currentLocale === 'es'">
+          Aviso: Este contenido es educativo y de referencia general. No es una guía oficial de ninguna marca ni
+          reemplaza los manuales del fabricante. Para instrucciones específicas de modelos y normativa local, consulta
+          siempre la documentación oficial y las páginas web de los fabricantes.
+        </template>
+        <template v-else>
+          Notice: This content is educational and for general reference. It is not an official guide from any brand and
+          does not replace manufacturer manuals. For model‑specific instructions and local regulations, always consult
+          official documentation and manufacturer websites.
+        </template>
       </p>
 
       <!-- Diagrama opcional según tema -->

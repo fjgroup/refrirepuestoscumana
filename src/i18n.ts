@@ -40,6 +40,7 @@ const messages = {
     about: {
       title: 'Who We Are',
       blurb: 'We are a refrigeration parts and solutions company serving technicians, facilities, and homeowners with reliable components and practical expertise.',
+      readMore: 'Read more',
       missionTitle: 'Mission',
       mission: 'Our mission is to help technicians, facilities and homeowners keep their cooling equipment working safely and efficiently. We do this by offering quality components from trusted brands, fast and honest guidance, and practical education that avoids jargon. We prioritize safety and cost-effectiveness: we explain options based on the real condition of the system, recommend only the parts that are truly needed, and back our advice with clear reasoning. For technicians and companies, we aim to be a reliable parts partner with on-hand inventory and prompt support. For homes and small businesses, we focus on quick diagnostics, transparent estimates and smart replacements that improve comfort and reduce energy waste. Everything we do is built on service, integrity and care for the people who rely on refrigeration every day.',
       visionTitle: 'Vision',
@@ -118,6 +119,7 @@ const messages = {
     about: {
       title: 'Sobre nosotros',
       blurb: 'Somos una empresa de repuestos y soluciones de refrigeración que atiende a técnicos, empresas y hogares con componentes confiables y asesoría práctica.',
+      readMore: 'Leer más',
       missionTitle: 'Misión',
       mission: 'Nuestra misión es ayudar a técnicos, empresas y hogares a mantener sus equipos de frío funcionando de forma segura y eficiente. Lo logramos ofreciendo repuestos de calidad de marcas confiables, asesoría rápida y honesta, y educación práctica sin tecnicismos. Priorizamos la seguridad y el ahorro: explicamos opciones según el estado real del equipo, recomendamos solo lo necesario y fundamentamos cada decisión con argumentos claros. Para técnicos y compañías, buscamos ser un aliado confiable con inventario oportuno y soporte ágil. Para hogares y pequeños comercios, brindamos diagnóstico rápido, presupuestos transparentes y reemplazos inteligentes que mejoran el confort y reducen el consumo. Todo lo que hacemos se basa en el servicio, la integridad y el cuidado por las personas que dependen de la refrigeración todos los días.',
       visionTitle: 'Visión',

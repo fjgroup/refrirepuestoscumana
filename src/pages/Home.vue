@@ -58,6 +58,7 @@ watch(currentLocale, () => { if (tipSlug.value) setTipFromSlug(tipSlug.value) })
   <section class="about container">
     <h2>{{ $t('about.title') }}</h2>
     <p>{{ $t('about.blurb') }}</p>
+    <RouterLink to="/about" class="about-read-more">{{ $t('about.readMore') }}</RouterLink>
   </section>
   <!-- Reemplazo: Tip aleatorio de la enciclopedia -->
   <section class="ency-tip container" v-if="tip">
@@ -126,6 +127,19 @@ watch(currentLocale, () => { if (tipSlug.value) setTipFromSlug(tipSlug.value) })
 .about,
 .ency-tip {
   padding: 32px 0
+}
+
+.about-read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--blue-800);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.about-read-more:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px
 }
 
 /* Tarjeta del tip enciclopedia */

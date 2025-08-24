@@ -77,7 +77,8 @@ onMounted(async () => {
 
 .header-bar {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: auto 1fr auto;
+  /* logo | flex | acciones */
   align-items: center;
   height: var(--header-h, 100px);
   background: #e9eef3;
@@ -118,6 +119,13 @@ onMounted(async () => {
 
 /* Mobile menu */
 @media (max-width: 768px) {
+  .nav {
+    grid-column: 3;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 16px
+  }
+
   .burger {
     display: block
   }
@@ -155,22 +163,17 @@ onMounted(async () => {
     display: none
   }
 
-  /* Mobile overrides to show language switch in menu */
-  @media (max-width: 768px) {
-    .lang-mobile {
-      display: block
-    }
+  .lang-mobile {
+    display: block
   }
-
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
-  display: flex;
-  align-items: center;
-  height: 64px
+  display: contents;
+  /* dejemos que el grid gestione la barra */
 }
 
 .brand {
@@ -181,8 +184,8 @@ onMounted(async () => {
   font-weight: 700;
   letter-spacing: .4px;
   padding-left: 16px;
-  /* asegurar que el logo quede centrado verticalmente en la fila */
   height: var(--header-h, 100px)
+    /* el grid la coloca a la izquierda */
 }
 
 .brand img {

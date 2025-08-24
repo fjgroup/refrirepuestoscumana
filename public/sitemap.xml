@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>http://localhost:5173/</loc><priority>1.0</priority></url>
-  <url><loc>http://localhost:5173/about</loc><priority>0.8</priority></url>
-  <url><loc>http://localhost:5173/products</loc><priority>0.8</priority></url>
-  <url><loc>http://localhost:5173/encyclopedia</loc><priority>0.9</priority></url>
-  <url><loc>http://localhost:5173/contact</loc><priority>0.6</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/</loc><lastmod>2025-08-24</lastmod><priority>1.0</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/about</loc><lastmod>2025-08-24</lastmod><priority>0.8</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/products</loc><lastmod>2025-08-24</lastmod><priority>0.8</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia</loc><lastmod>2025-08-24</lastmod><priority>0.8</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/contact</loc><lastmod>2025-08-24</lastmod><priority>0.8</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/compressor-types</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/basic-cycle</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/preventive-ac</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/filter-driers</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/thermostats</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/electronic-controls</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/oils-lubes</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/motors-fans</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/expansion-valves</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/tools-accessories</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/refrigerants-r134a</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/refrigerants-r410a</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/refrigerants-r404a</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/refrigerants-r22</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/sight-glass</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/leak-detection</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/superheat-subcool</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/evap-condenser-coils</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/cap-tube</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/defrost-methods</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/safety-basics</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/charging-procedures</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/vacuum-best-practices</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
+  <url><loc>https://refrirepuestoscumana.com/encyclopedia/system-documentation</loc><lastmod>2025-08-24</lastmod><priority>0.7</priority></url>
 </urlset>
-
