@@ -1,16 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="Favicon copo de nieve">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#b6e3ff"/>
-      <stop offset="1" stop-color="#6ec1ff"/>
+      <stop offset="0" stop-color="#d8f1ff"/>
+      <stop offset="1" stop-color="#7dd3ff"/>
     </linearGradient>
   </defs>
   <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#g)"/>
-  <g fill="#0a1c30">
-    <path d="M32 10 v12 l8 -6 M32 22 l-8 -6" stroke="#0a1c30" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M32 26 v12 l8 -6 M32 38 l-8 -6" stroke="#0a1c30" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <circle cx="32" cy="50" r="3" fill="#0a1c30"/>
+  <!-- Snowflake -->
+  <g stroke="#0a1c30" stroke-width="2.2" stroke-linecap="round">
+    <line x1="32" y1="12" x2="32" y2="52"/>
+    <line x1="12" y1="32" x2="52" y2="32"/>
+    <line x1="18" y1="18" x2="46" y2="46"/>
+    <line x1="46" y1="18" x2="18" y2="46"/>
+    <!-- small branches -->
+    <line x1="32" y1="12" x2="28" y2="16"/>
+    <line x1="32" y1="12" x2="36" y2="16"/>
+    <line x1="32" y1="52" x2="28" y2="48"/>
+    <line x1="32" y1="52" x2="36" y2="48"/>
   </g>
-  <title>REFRIREPUESTOSCUMANÁ - Cold Icon</title>
+  <title>REFRIREPUESTOSCUMANÁ ❄️</title>
 </svg>
-

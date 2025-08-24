@@ -1,0 +1,20 @@
+# Base positive prompt (append to each)
+professional product photography, catalog e-commerce style, white seamless background, soft studio lighting, 45-degree angle, high detail, realistic materials, subtle studio shadow, centered composition, no text, no watermark
+
+# Base negative prompt (use for all)
+low quality, blurry, noise, artifacts, watermark, text, logo, hands, people, busy background, colored background, reflections, overexposed highlights, harsh shadows
+
+# Categories (one per line, after the base prompt)
+Hermetic refrigeration compressor, black rounded steel shell, mounting base, visible suction and discharge tubes, generic label sticker visible, front 45-degree angle
+Scroll refrigeration compressor, tall cylindrical body, black shell with electrical box, mounting feet, service ports, 45-degree angle
+Filter drier with integrated sight glass, copper flare connections, blue painted body, inspection window centered, front angle
+Refrigeration sight glass, brass body, green moisture indicator visible, flare connections, macro catalog photo, front angle
+Wall mounted mechanical thermostat, clean white plastic housing, temperature dial, minimalist design, front view
+Refrigeration electronic temperature controller, digital LED display, front buttons, front angle
+Refrigerant cylinder, safety valve and top handle, painted orange, generic label, 45-degree angle
+Refrigerant cylinder, safety valve and top handle, painted green, generic label, 45-degree angle
+HVAC manifold gauge set, dual analog gauges with colored hoses, brass fittings, front angle
+Thermostatic expansion valve (TXV), brass body, capillary bulb and equalizer line, 45-degree angle
+Axial fan with metal guard, black blades, mounting frame, front angle
+HVAC fan motor, cylindrical housing with shaft, mounting brackets, 45-degree angle
+

@@ -1,18 +1,47 @@
 <script setup lang="ts">
 import { icons } from '@/shared/icons'
+const photo = (slug: string) => new URL(`/products/${slug}/main.webp`, import.meta.url).href
 </script>
 
 <template>
   <section class="container pad">
     <h1>{{ $t('products.title') }}</h1>
     <div class="categories">
-      <div class="cat"><span class="ico">{{ icons.compressors }}</span> {{ $t('products.cats.compressors') }}</div>
-      <div class="cat"><span class="ico">{{ icons.electrical }}</span> {{ $t('products.cats.electrical') }}</div>
-      <div class="cat"><span class="ico">{{ icons.refrigerants }}</span> {{ $t('products.cats.refrigerants') }}</div>
-      <div class="cat"><span class="ico">{{ icons.valves }}</span> {{ $t('products.cats.valves') }}</div>
-      <div class="cat"><span class="ico">{{ icons.motors }}</span> {{ $t('products.cats.motors') }}</div>
-      <div class="cat"><span class="ico">{{ icons.driers }}</span> {{ $t('products.cats.driers') }}</div>
-      <div class="cat"><span class="ico">{{ icons.tools }}</span> {{ $t('products.cats.tools') }}</div>
+      <div class="cat">
+        <img loading="lazy" :src="photo('compressor-hermetic')" alt="compressor" width="28" height="28"
+          @error="($event.target as HTMLImageElement).style.display = 'none'" />
+        <span class="ico">{{ icons.compressors }}</span> {{ $t('products.cats.compressors') }}
+      </div>
+      <div class="cat">
+        <img loading="lazy" :src="photo('controller-digital')" alt="electrical" width="28" height="28"
+          @error="($event.target as HTMLImageElement).style.display = 'none'" />
+        <span class="ico">{{ icons.electrical }}</span> {{ $t('products.cats.electrical') }}
+      </div>
+      <div class="cat">
+        <img loading="lazy" :src="photo('refrigerant-cylinder-orange')" alt="refrigerants" width="28" height="28"
+          @error="($event.target as HTMLImageElement).style.display = 'none'" />
+        <span class="ico">{{ icons.refrigerants }}</span> {{ $t('products.cats.refrigerants') }}
+      </div>
+      <div class="cat">
+        <img loading="lazy" :src="photo('txv-valve')" alt="valves" width="28" height="28"
+          @error="($event.target as HTMLImageElement).style.display = 'none'" />
+        <span class="ico">{{ icons.valves }}</span> {{ $t('products.cats.valves') }}
+      </div>
+      <div class="cat">
+        <img loading="lazy" :src="photo('fan-motor')" alt="motors" width="28" height="28"
+          @error="($event.target as HTMLImageElement).style.display = 'none'" />
+        <span class="ico">{{ icons.motors }}</span> {{ $t('products.cats.motors') }}
+      </div>
+      <div class="cat">
+        <img loading="lazy" :src="photo('filter-drier')" alt="driers" width="28" height="28"
+          @error="($event.target as HTMLImageElement).style.display = 'none'" />
+        <span class="ico">{{ icons.driers }}</span> {{ $t('products.cats.driers') }}
+      </div>
+      <div class="cat">
+        <img loading="lazy" :src="photo('manifold-gauges')" alt="tools" width="28" height="28"
+          @error="($event.target as HTMLImageElement).style.display = 'none'" />
+        <span class="ico">{{ icons.tools }}</span> {{ $t('products.cats.tools') }}
+      </div>
     </div>
     <p class="note">{{ $t('products.catalogNote') }}</p>
   </section>

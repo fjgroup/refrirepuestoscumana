@@ -22,63 +22,71 @@ const CATEGORIES = [
   'fan-motor',
 ]
 
-async function ensureDir(p){ await fs.promises.mkdir(p,{recursive:true}) }
+async function ensureDir(p) { await fs.promises.mkdir(p, { recursive: true }) }
 
-function isImage(file){ return /\.(png|jpg|jpeg|webp)$/i.test(file) }
+function isImage(file) { return /\.(png|jpg|jpeg|webp)$/i.test(file) }
 
-async function whitenBackground(img){
+async function whitenBackground(img) {
   // Convert to raw and push near-white to pure white softly
   const { data, info } = await img.ensureAlpha().raw().toBuffer({ resolveWithObject: true })
   const buf = Buffer.from(data)
-  for(let i=0;i<buf.length;i+=4){
-    const r=buf[i], g=buf[i+1], b=buf[i+2]
-    const y = 0.2126*r + 0.7152*g + 0.0722*b
-    if (y>245){ buf[i]=255; buf[i+1]=255; buf[i+2]=255 }
+  for (let i = 0; i < buf.length; i += 4) {
+    const r = buf[i], g = buf[i + 1], b = buf[i + 2]
+    const y = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    if (y > 245) { buf[i] = 255; buf[i + 1] = 255; buf[i + 2] = 255 }
   }
-  return sharp(buf,{ raw:{ width:info.width, height:info.height, channels:4 } })
+  return sharp(buf, { raw: { width: info.width, height: info.height, channels: 4 } })
 }
 
-async function processFile(srcPath, outBase){
+async function processFile(srcPath, outBase) {
   let img = sharp(srcPath)
   const meta = await img.metadata()
-  if(!meta.width || !meta.height) throw new Error('Invalid image: '+srcPath)
+  if (!meta.width || !meta.height) throw new Error('Invalid image: ' + srcPath)
 
   // Resize to max 1200 in either dimension
-  img = img.resize({ width: meta.width>meta.height?1200:undefined, height: meta.height>=meta.width?1200:undefined, fit:'inside', withoutEnlargement:true })
+  img = img.resize({ width: meta.width > meta.height ? 1200 : undefined, height: meta.height >= meta.width ? 1200 : undefined, fit: 'inside', withoutEnlargement: true })
 
   // Normalize near-white backgrounds
   img = await whitenBackground(img)
 
   await ensureDir(path.dirname(outBase))
-  await img.webp({ quality:85 }).toFile(outBase + '.webp')
-  await img.jpeg({ quality:86, mozjpeg:true }).toFile(outBase + '.jpg')
+  await img.webp({ quality: 85 }).toFile(outBase + '.webp')
+  await img.jpeg({ quality: 86, mozjpeg: true }).toFile(outBase + '.jpg')
 }
 
-async function main(){
+async function main() {
   await ensureDir(SRC_DIR)
   await ensureDir(OUT_DIR)
-  for(const cat of CATEGORIES){
+  for (const cat of CATEGORIES) {
     await ensureDir(path.join(SRC_DIR, cat))
     await ensureDir(path.join(OUT_DIR, cat))
   }
 
-  const entries = await fs.promises.readdir(SRC_DIR, { withFileTypes:true })
-  for(const ent of entries){
-    if(!ent.isDirectory()) continue
+  const entries = await fs.promises.readdir(SRC_DIR, { withFileTypes: true })
+  for (const ent of entries) {
+    if (!ent.isDirectory()) continue
     const cat = ent.name
     const srcCat = path.join(SRC_DIR, cat)
     const outCat = path.join(OUT_DIR, cat)
-    const files = await fs.promises.readdir(srcCat)
-    for(const f of files){
-      if(!isImage(f)) continue
-      const name = path.parse(f).name.replace(/\s+/g,'-').toLowerCase()
+    const files = (await fs.promises.readdir(srcCat)).filter(isImage)
+    let firstOutBase = null
+    for (const f of files) {
+      const name = path.parse(f).name.replace(/\s+/g, '-').toLowerCase()
       const outBase = path.join(outCat, name)
-      console.log('Processing', path.join(srcCat,f))
+      console.log('Processing', path.join(srcCat, f))
       await processFile(path.join(srcCat, f), outBase)
+      if (!firstOutBase) firstOutBase = outBase
+    }
+    // Ensure a main.webp/jpg exists for easy site consumption
+    if (firstOutBase) {
+      const mainWebp = path.join(outCat, 'main.webp')
+      const mainJpg = path.join(outCat, 'main.jpg')
+      try { await fs.promises.access(mainWebp) } catch { await fs.promises.copyFile(firstOutBase + '.webp', mainWebp) }
+      try { await fs.promises.access(mainJpg) } catch { await fs.promises.copyFile(firstOutBase + '.jpg', mainJpg) }
     }
   }
   console.log('Done. Check', OUT_DIR)
 }
 
-main().catch(e=>{ console.error(e); process.exit(1) })
+main().catch(e => { console.error(e); process.exit(1) })
 
