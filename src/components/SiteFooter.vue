@@ -10,7 +10,7 @@
         <div><i-tabler-phone style="vertical-align:-2px; margin-right:6px" />Tel: <a href="tel:9412424040">941 242
             4040</a></div>
       </div>
-      <div class="social">
+      <!--  <div class="social">
         <span>{{ $t('footer.follow') }}:</span>
         <a href="https://www.instagram.com/refrirepuestoscumana" target="_blank"
           rel="noopener"><i-tabler-brand-instagram style="vertical-align:-2px; margin-right:6px" />Instagram</a>
@@ -19,7 +19,7 @@
         <a href="https://api.whatsapp.com/send?phone=5804148408202" target="_blank"
           rel="noopener"><i-tabler-brand-whatsapp style="vertical-align:-2px; margin-right:6px" />WhatsApp</a>
       </div>
-      <div class="copy">© {{ new Date().getFullYear() }} REFRIREPUESTOSCUMANÁ — {{ $t('footer.rights') }}</div>
+      <div class="copy">© {{ new Date().getFullYear() }} REFRIREPUESTOSCUMANÁ — {{ $t('footer.rights') }}</div>-->
     </div>
   </footer>
 </template>
