@@ -23,7 +23,8 @@
 }
 
 .pad {
-  padding: 32px 0
+  /* Espaciado solo vertical para conservar el padding lateral del .container */
+  padding-block: 32px;
 }
 
 /* Mejor legibilidad en párrafos largos: justificado suave con guiones automáticos */

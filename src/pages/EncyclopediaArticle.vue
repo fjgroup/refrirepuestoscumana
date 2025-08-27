@@ -222,7 +222,7 @@ const diagram = computed(() => {
 }
 
 .pad {
-  padding: 32px 0
+  padding-block: 32px;
 }
 
 .lead {

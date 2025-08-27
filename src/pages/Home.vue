@@ -127,7 +127,7 @@ watch(currentLocale, () => { if (tipSlug.value) setTipFromSlug(tipSlug.value) })
 
 .about,
 .ency-tip {
-  padding: 32px 0
+  padding-block: 32px;
 }
 
 .about-read-more {

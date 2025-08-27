@@ -44,7 +44,7 @@ const fourRandom = computed(() => items
 }
 
 .testimonials {
-  padding: 32px 0
+  padding-block: 32px;
 }
 
 .grid {

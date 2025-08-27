@@ -53,7 +53,8 @@ const filtered = computed(() => {
 }
 
 .pad {
-  padding: 32px 0
+  /* Vertical spacing only so we keep the lateral padding from .container */
+  padding-block: 32px;
 }
 
 .controls {

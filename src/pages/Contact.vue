@@ -5,7 +5,7 @@
     <h1>{{ $t('contact.title') }}</h1>
     <div class="card">
       <div><i-tabler-map-pin style="vertical-align:-2px; margin-right:6px" /> <strong>{{ $t('contact.address')
-      }}:</strong> 5532 Fishermans Drive, Bradenton, Florida</div>
+          }}:</strong> 5532 Fishermans Drive, Bradenton, Florida</div>
       <div><i-tabler-phone style="vertical-align:-2px; margin-right:6px" /> <strong>{{ $t('contact.phone') }}:</strong>
         <a href="tel:9412424040">941 242 4040</a>
       </div>
@@ -27,7 +27,8 @@
 }
 
 .pad {
-  padding: 32px 0
+  /* Espaciado solo vertical para conservar el padding lateral del .container */
+  padding-block: 32px;
 }
 
 .card {
