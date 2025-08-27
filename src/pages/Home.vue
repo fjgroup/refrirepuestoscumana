@@ -183,7 +183,8 @@ watch(currentLocale, () => { if (tipSlug.value) setTipFromSlug(tipSlug.value) })
 }
 
 .brand-logo {
-  height: 150px;
+  height: 225px;
+  /* +50% */
   max-width: min(680px, 95%);
   width: auto;
   object-fit: contain;
@@ -200,7 +201,8 @@ watch(currentLocale, () => { if (tipSlug.value) setTipFromSlug(tipSlug.value) })
 
 @media (max-width: 520px) {
   .brand-logo {
-    height: 112px
+    height: 168px;
+    /* +50% */
   }
 }
 </style>

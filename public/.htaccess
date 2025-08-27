@@ -2,10 +2,15 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  # Don’t rewrite files or directories
+
+  # Special case: route /products must render SPA even though a /products directory exists
+  RewriteRule ^products/?$ /index.html [L]
+
+  # Don’t rewrite files or directories (keep assets working, e.g. /products/<cat>/main.webp)
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
+
   # Rewrite everything else to index.html
   RewriteRule ^ index.html [L]
 </IfModule>
