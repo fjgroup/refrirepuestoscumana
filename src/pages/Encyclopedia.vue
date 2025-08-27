@@ -100,8 +100,9 @@ const filtered = computed(() => {
 }
 
 .item {
-  background: #f7fbff;
-  border: 1px solid #c3d9ee;
+  background: #ffffff;
+  /* igual que las cards de Testimonios */
+  border: 1px solid #d7dfe6;
   border-radius: 10px;
   padding: 12px
 }

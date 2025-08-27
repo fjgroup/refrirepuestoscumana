@@ -73,7 +73,9 @@ body {
 }
 
 main {
-  min-height: calc(100dvh - var(--header-h, 100px) - 180px)
+  min-height: calc(100dvh - var(--header-h, 100px) - 180px);
+  /* Fondo uniforme para todas las páginas */
+  background: var(--gray-100);
 }
 
 /* Tipografía global inspirada en Wikipedia */
