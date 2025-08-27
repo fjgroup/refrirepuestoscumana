@@ -13,7 +13,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "sitemap": "node scripts/generate-sitemap.cjs"
+    "sitemap": "node scripts/generate-sitemap.cjs",
+    "process-logo": "node scripts/process-logo.cjs"
   },
   "dependencies": {
     "vue": "^3.5.18",

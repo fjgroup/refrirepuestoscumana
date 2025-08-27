@@ -36,7 +36,7 @@ function pickRandomTip() {
 }
 
 onMounted(async () => {
-  const candidates = ['/logo.webp', '/logo.png', '/logo_white.webp']
+  const candidates = ['/logo_sin_hielo.webp', '/logo_sin_hielo.png', '/logo.webp', '/logo.png', '/logo_white.webp']
   for (const c of candidates) {
     try { brandLogo.value = await tryLoad(c); break } catch { }
   }
@@ -90,12 +90,13 @@ watch(currentLocale, () => { if (tipSlug.value) setTipFromSlug(tipSlug.value) })
 
 .hero-inner {
   margin-top: -220px;
-  padding: 0 16px
+  padding: 0 clamp(24px, 5vw, 32px)
 }
 
 .container {
   max-width: 1100px;
-  margin: 0 auto
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 32px)
 }
 
 .subtitle {

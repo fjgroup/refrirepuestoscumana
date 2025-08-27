@@ -28,7 +28,7 @@
 .site-footer {
   background: #0a1c30;
   color: #cfe9ff;
-  padding: 24px 16px;
+  padding: 24px clamp(24px, 5vw, 32px);
   border-top: 1px solid rgba(255, 255, 255, .08)
 }
 

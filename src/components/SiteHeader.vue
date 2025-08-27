@@ -9,8 +9,8 @@ const toggleLocale = () => {
   setLocale(currentLocale.value === 'en' ? 'es' : 'en')
 }
 
-// Resolución progresiva del logo: /logo.webp → /logo.png → /logo_white.webp
-const logoSrc = ref<string>('/logo.webp')
+// Resolución progresiva del logo: /logo_sin_hielo.webp → /logo_sin_hielo.png → /logo.webp → /logo.png → /logo_white.webp
+const logoSrc = ref<string>('/logo_sin_hielo.webp')
 
 function tryLoad(src: string): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -22,7 +22,7 @@ function tryLoad(src: string): Promise<string> {
 }
 
 onMounted(async () => {
-  const candidates = ['/logo.webp', '/logo.png', '/logo_white.webp']
+  const candidates = ['/logo_sin_hielo.webp', '/logo_sin_hielo.png', '/logo.webp', '/logo.png', '/logo_white.webp']
   for (const c of candidates) {
     try { logoSrc.value = await tryLoad(c); break } catch { }
   }
@@ -90,7 +90,7 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 clamp(24px, 5vw, 32px);
   position: relative;
 }
 
@@ -123,7 +123,7 @@ onMounted(async () => {
     grid-column: 3;
     display: flex;
     justify-content: flex-end;
-    padding-right: 16px
+    padding-right: clamp(24px, 5vw, 32px)
   }
 
   .burger {
@@ -137,7 +137,7 @@ onMounted(async () => {
     top: var(--header-h, 100px);
     background: #ffffff;
     border-bottom: 1px solid #d7dfe6;
-    padding: 10px 12px;
+    padding: 10px clamp(24px, 5vw, 32px);
     box-shadow: 0 10px 24px rgba(10, 28, 48, .12);
     display: flex;
     flex-direction: column;
@@ -171,7 +171,7 @@ onMounted(async () => {
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 clamp(24px, 5vw, 32px);
   display: contents;
   /* dejemos que el grid gestione la barra */
 }
@@ -183,16 +183,16 @@ onMounted(async () => {
   color: #0a1c30;
   font-weight: 700;
   letter-spacing: .4px;
-  padding-left: 16px;
+  padding-left: clamp(24px, 5vw, 32px);
   height: var(--header-h, 100px)
     /* el grid la coloca a la izquierda */
 }
 
 .brand img {
-  height: 100px;
+  height: calc(var(--header-h, 100px) - 8px);
   width: auto;
   /* mantener proporción */
-  max-height: calc(var(--header-h, 100px) - 8px);
+  max-height: none;
   object-fit: contain
 }
 

@@ -36,8 +36,8 @@ watch(currentLocale, () => applySEO())
   --blue-500: #4db7ff;
   --gray-100: #f0f7ff;
   --text: #0a1c30;
-  --header-h: 100px;
-  /* altura de header usada por SiteHeader y layout */
+  --header-h: 150px;
+  /* altura de header usada por SiteHeader y layout (aumentada 50%) */
 }
 
 * {
@@ -151,13 +151,13 @@ a:hover {
 /* Ajuste de altura del header por viewport */
 @media (max-width: 768px) {
   :root {
-    --header-h: 84px
+    --header-h: 126px
   }
 }
 
 @media (max-width: 520px) {
   :root {
-    --header-h: 76px
+    --header-h: 114px
   }
 }
 </style>

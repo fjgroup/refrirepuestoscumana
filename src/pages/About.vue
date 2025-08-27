@@ -19,7 +19,7 @@
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 16px
+  padding: 0 clamp(24px, 5vw, 32px)
 }
 
 .pad {

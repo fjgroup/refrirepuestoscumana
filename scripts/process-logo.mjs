@@ -3,10 +3,10 @@ import path from 'node:path'
 import sharp from 'sharp'
 
 // Inputs
-const INPUT_PATH = path.resolve('src/logo_white.png')
+const INPUT_PATH = path.resolve('public/logo_sin_hielo_original.png')
 const OUT_DIR = path.resolve('public')
-const OUT_PNG = path.join(OUT_DIR, 'logo.png')
-const OUT_WEBP = path.join(OUT_DIR, 'logo.webp')
+const OUT_PNG = path.join(OUT_DIR, 'logo_sin_hielo.png')
+const OUT_WEBP = path.join(OUT_DIR, 'logo_sin_hielo.webp')
 
 // Utils
 async function ensureDir(p) {
