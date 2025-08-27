@@ -3,9 +3,9 @@
 <template>
   <footer class="site-footer">
     <div class="container">
-      <div class="brand">REFRIREPUESTOSCUMANÁ</div>
+      <div class="brand">REFRI REPUESTOS CUMANÁ CA LLC</div>
       <div class="contact">
-        <div><i-tabler-map-pin style="vertical-align:-2px; margin-right:6px" />5532 Fishermans Drive, Bradenton, Florida
+        <div><i-tabler-map-pin style="vertical-align:-2px; margin-right:6px" />5532 Fishermans Drive, Bradenton, Florida 34210 EE.UU.
         </div>
         <div><i-tabler-phone style="vertical-align:-2px; margin-right:6px" />Tel: <a href="tel:9412424040">941 242
             4040</a></div>
